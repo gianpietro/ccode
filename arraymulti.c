@@ -5,6 +5,7 @@ they can be utilised with pointer arithmatics
 #include <stdio.h>
 
 int main(void) {
+  int stp;
   short a[3] = {10, 11, 12};
   short b[2] = {22, 23};
   short c[3] = {35, 38, 39};
@@ -24,6 +25,10 @@ int main(void) {
     printf("values in array a %d\n", *(arrays[0]+i));  // output 15,17,12
   }
   
+ for (i=0; i<2; i++) {
+    printf("values in array b %d\n", *(arrays[1]+i));  // output 22, 23
+  }
 
+ scanf("%d", &stp);
   return 0;
 }
