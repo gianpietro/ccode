@@ -7,7 +7,9 @@ int main(void) {
 
   ptr = array;
 
-  printf("%d\n",array[0]);
+  printf("value of *ptr is %d\n", *ptr);
+  
+  printf("value of array[0] is %d\n",array[0]);
   printf("%p\n",&array[0]);
 
   *ptr = 10;
