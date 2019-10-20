@@ -11,6 +11,10 @@ int main(void) {
   printf("Enter number of items to go into array ");
   scanf("%d", &num);
   array = allocateIntArray(num);
+  if(array == NULL) {
+    printf("malloc of size %d failed!\n", num);   // could also call perror here
+    exit(1);   // or return an error to caller
+   }
   for(i=0; i<num;i++){
     scanf("%d",array+i);
   }
@@ -27,6 +31,7 @@ int main(void) {
 int * allocateIntArray(int num) {
   int * ptr;
   ptr  = (int *) malloc(num*sizeof(int));
+  //ptr = NULL;    test code DELETE
   return ptr;
 }
 
