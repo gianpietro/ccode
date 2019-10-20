@@ -17,6 +17,8 @@ int main(void) {
   for (i=0;i<num;i++){
     printf("array values %d\n",array[i]);
   }
+
+  free(array);
   
   return 0;
 }
