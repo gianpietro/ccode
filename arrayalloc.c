@@ -89,7 +89,7 @@ double findAverage(int * ptr, int n) {
   double avg;
   int i;
   avg = 0;
-HEAD
+  //HEAD
 
 
    for (i=0; i<n; i++) {
@@ -99,7 +99,7 @@ HEAD
    return avg/n;
 }
 
-7b142ca4c96824be2004291bd673cd1ccedbdec7
+//7b142ca4c96824be2004291bd673cd1ccedbdec7
 
 
   
