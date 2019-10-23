@@ -1,3 +1,8 @@
+/* This example uses a array initiated as a pointer *array
+It does not have a specified size and I use a function to  malloc 
+a size for the array specified by an integer entered by user 
+
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
