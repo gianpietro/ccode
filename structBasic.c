@@ -30,7 +30,7 @@ int main(void) {
     struct student *language;
 
     struct student *classics;
-
++
     printf("Names: %s %s, %s %s\n", me.firstName, me.lastName, you.firstName, you.lastName);
     printf("Year of birth: %d\n", me.birthYear);
     printf("Average grade: %.2lf\n", me.aveGrade);
@@ -40,6 +40,7 @@ int main(void) {
     printPerson(me);
     
     // using functions on stemStudent, pointer not used in this example 
+    // stemStudent is not a pointer so do not need to set up memory allocation
     printf("Next enter details of Science student\n");
     readStudent(&stemStudent);  
     printPerson(stemStudent); 
@@ -101,7 +102,8 @@ void readClassics(struct student *classicStudent){
 void printClassics(struct student *ptr, int reg){
   int i = 0;
   for (i=0; i<reg; i++){
-    printPerson(ptr[i]);
+    printPerson(ptr[i]);            // this function is with non pointer parameter
+    printPersonPtr(ptr+i);          // the same result but with a pointer parameter so now use pointer arithmatic
   }
 }
 
