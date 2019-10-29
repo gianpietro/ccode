@@ -9,7 +9,7 @@ int main(void)
   int ndigit[10];
   int j, k, m;
   int x, y, z;
-  int p, q, r;
+  int p, q, r, w;
   m = 0;
   j = 0;
   
@@ -54,9 +54,12 @@ int main(void)
     */
 
 
+
+    
     y = 0;
     z = 0;
     r =0;
+    w = 0;
 
     for (x=0; x<10; x++){
        y = ndigit[x];
@@ -65,17 +68,28 @@ int main(void)
        }
     }
     printf("value of largest item %d\n", z);
+
+    w = z;
+    for (r=z; r>0; r--){
+     for(q=0; q<10; q++){
+       
+   	if(ndigit[q] == z){  
+           printf("*");
+	   // w--;
+	} else if (ndigit[q] == w){
+	   printf("*");
+	} else {
+	  printf("--");
+	}
     
-   for(q=0; q<10; q++){
-    for (r=z; r>0; r--){   
-	if(ndigit[q] == r){  
-           printf("*");          
-	} else printf(" ");
+     }
+     
+     printf("\n");
     }
-	   
-      }
-    }
-      
+   
+    
+
+    
 
 
        
