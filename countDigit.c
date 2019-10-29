@@ -8,6 +8,11 @@ int main(void)
   int c, i, nwhite, nother;
   int ndigit[10];
   int j, k, m;
+  int x, y, z;
+  int p, q, r;
+  m = 0;
+  j = 0;
+  
 
   nwhite = nother = 0;
  
@@ -30,14 +35,51 @@ int main(void)
     printf(" %d", ndigit[i]);
 
   printf(", white space = %d, other = %d\n",nwhite, nother);
-
-  //  for (j=0; j<10; j++){
-    k = ndigit[1];
-    for (m=0; m <k; m++){
-      printf("*\n");
+ 
+  /* histogram with verical bars*/
+    for (j=0; j<10; j++){
+      k = ndigit[j];
+      for (m=0; m <k; m++){ 
+         printf("*");
+      }   
+      printf("\n");     
     }
-    //x  }
+  
+    /* Find the array index with the largest value
+       then start a loop from that value and go through 
+       array, if the array index is that value print else
+       move once space along and check next array value.
+       When have completed loop start loop again with the start
+       value at largest array value less 1
+    */
 
+
+    y = 0;
+    z = 0;
+    r =0;
+
+    for (x=0; x<10; x++){
+       y = ndigit[x];
+       if (y > z) {
+         z = y;
+       }
+    }
+    printf("value of largest item %d\n", z);
+    
+   for(q=0; q<10; q++){
+    for (r=z; r>0; r--){   
+	if(ndigit[q] == r){  
+           printf("*");          
+	} else printf(" ");
+    }
+	   
+      }
+    }
+      
+
+
+       
+ 
   scanf("%d", &stp);
 
   return 0;
