@@ -40,12 +40,17 @@ void inputStructure(struct matrix *moon){
 }
 
 void pStruct(struct matrix *moon) {
-  printf("Moon co-ordinate direction %s , point %d \n", moon->direction, moon->coordinate);
+  printf("POINTER Moon co-ordinate direction %s , point %d \n", moon->direction, moon->coordinate);
+}
+
+void npStruct(struct matrix moon){
+  printf("NOTPOINTER Moon co-ordinate direction %s , point %d \n", moon.direction, moon.coordinate);
 }
 
 void printStructure(struct matrix *ptr, int co){
   int i = 0;
   for (i=0;i<co;i++){
     pStruct(ptr+i);
+    npStruct(ptr[i]);
   } 
 }
