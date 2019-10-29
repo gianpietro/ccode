@@ -7,6 +7,7 @@ int main(void)
   int stp;
   int c, i, nwhite, nother;
   int ndigit[10];
+  int j, k, m;
 
   nwhite = nother = 0;
  
@@ -29,6 +30,13 @@ int main(void)
     printf(" %d", ndigit[i]);
 
   printf(", white space = %d, other = %d\n",nwhite, nother);
+
+  //  for (j=0; j<10; j++){
+    k = ndigit[1];
+    for (m=0; m <k; m++){
+      printf("*\n");
+    }
+    //x  }
 
   scanf("%d", &stp);
 
