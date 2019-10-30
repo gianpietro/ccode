@@ -1,19 +1,22 @@
 /* count digits, white space, others */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
+  #define UPPER 10
+  
   int stp;
   int c, i, nwhite, nother;
-  int ndigit[10];
+  int ndigit[UPPER];
   int r, x, y, z, m, k;
   
   i = k = r = x = y = z = m = 0;
   nwhite = nother = 0;
-  
-  #define UPPER 10		// upper limit of array  
  
+  system("COLOR F2");  //https://agyanadda.blogspot.com/2019/01/how-to-color-of-text-in-c-language.html
+
   for (i = 0; i < UPPER; ++i)
      ndigit[i] = 0;
 
@@ -38,15 +41,16 @@ int main(void)
   printf("\n");
   printf("Vertical Horizontal histogram of digit values between 0 and 9\n");
   printf("------------------------------------------------------\n");
-  printf("\n");  
+  printf("\n");
+    
   for (i=0; i < UPPER; i++){   
       k = ndigit[i];
       for (m=0; m < k; m++){ 
-         printf("*");
+        printf("X");
       }   
       printf("\n");     
     }
-  
+ 
     printf("\n");
   
     /* find the highest value held in the array */
@@ -63,11 +67,11 @@ int main(void)
     printf("value of largest item %d\n", z);
     printf("\n");
     printf("Horizontal histogram of digit values between 0 and 9\n");
-    printf("----------------------------------------------------------------------------\n");
+    /*  printf("----------------------------------------------------------------------------\n");
     printf("\n");   
     for (i = 0; i < UPPER; ++i)
        printf("%d\t", i);
-    printf("\n----------------------------------------------------------------------------\n");
+       printf("\n----------------------------------------------------------------------------\n"); */
     printf("\n");
 
     /* The digit which occurs the most is stored in z
@@ -80,13 +84,18 @@ int main(void)
     for (r=z; r > 0; r--){         
       for (i=0; i < UPPER; i++){  
    	if(ndigit[i] >= z)
-          printf("*\t");
+          printf("X\t");
 	else
 	  printf(" \t");
       }
        printf("\n");
       z--;
-    }          
+    }    
+    printf("----------------------------------------------------------------------------\n");
+    printf("\n");   
+    for (i = 0; i < UPPER; ++i)
+       printf("%d\t", i);
+    printf("\n----------------------------------------------------------------------------\n");      
  
   scanf("%d", &stp);
 
