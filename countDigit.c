@@ -39,7 +39,7 @@ int main(void)
   printf(", white space = %d, other = %d\n",nwhite, nother);     // totals for each char digit, white space and other
  
   printf("\n");
-  printf("Vertical Horizontal histogram of digit values between 0 and 9\n");
+  printf("Horizontal histogram of digit values between 0 and 9\n");
   printf("------------------------------------------------------\n");
   printf("\n");
     
@@ -66,24 +66,12 @@ int main(void)
     printf(", white space = %d, other = %d\n",nwhite, nother);   
     printf("value of largest item %d\n", z);
     printf("\n");
-    printf("Horizontal histogram of digit values between 0 and 9\n");
-    /*  printf("----------------------------------------------------------------------------\n");
-    printf("\n");   
-    for (i = 0; i < UPPER; ++i)
-       printf("%d\t", i);
-       printf("\n----------------------------------------------------------------------------\n"); */
+    printf("Vertical histogram of digit values between 0 and 9\n");
     printf("\n");
 
-    /* The digit which occurs the most is stored in z
-       using a loop from z down to zero if the array index
-       has a value of z or higher then it will print an astrix.
-       The value of z is then reduced by 1. Again the loop starts and
-       if the value in the array index is higher or equale z an
-       astrix will be printed */
-
-    for (r=z; r > 0; r--){                // start a loop with the highest occuring value, z
+    for (r=z; r > 0; r--){                // start a loop with the highest occurring value, z
       for (i=0; i < UPPER; i++){          // loop through the array
-   	if(ndigit[i] >= z)                // if the value of array is >= highest occuring value
+   	if(ndigit[i] >= z)                // if the value of array is >= highest occurring value
           printf("X\t");                  // print the character X  
 	else
 	  printf(" \t");                  // otherwise move a space along
