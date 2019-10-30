@@ -81,15 +81,15 @@ int main(void)
        if the value in the array index is higher or equale z an
        astrix will be printed */
 
-    for (r=z; r > 0; r--){         
-      for (i=0; i < UPPER; i++){  
-   	if(ndigit[i] >= z)
-          printf("X\t");
+    for (r=z; r > 0; r--){                // start a loop with the highest occuring value, z
+      for (i=0; i < UPPER; i++){          // loop through the array
+   	if(ndigit[i] >= z)                // if the value of array is >= highest occuring value
+          printf("X\t");                  // print the character X  
 	else
-	  printf(" \t");
+	  printf(" \t");                  // otherwise move a space along
       }
        printf("\n");
-      z--;
+       z--;                               // reduce the value of z by 1
     }    
     printf("----------------------------------------------------------------------------\n");
     printf("\n");   
