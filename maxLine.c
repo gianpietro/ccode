@@ -2,8 +2,8 @@
 
 #define MAXLINE 1000	       				// maximum input line size
 
-int getline(char *, int);
-void copy(char *, char *);
+int getl(char line[], int maxline);
+void copy(char to[], char from[]);
 
 int main(void){
   int stp;
@@ -15,7 +15,7 @@ int main(void){
 
   max = 0;
   k = 0;
-  while ((len = getline(line, MAXLINE)) > 0)
+  while ((len = getl(line, MAXLINE)) > 0)
     if (len > max){
       max = len;
       copy(longest, line);
@@ -34,7 +34,7 @@ int main(void){
  return 0;
 }
 
-int getline(char s[], int lim){
+int getl(char s[], int lim){
   int c, i;
   
   for (i=0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; ++i)
