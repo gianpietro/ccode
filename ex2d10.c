@@ -1,3 +1,10 @@
+/* Enter a character in upper case and program will convert
+to lower case.It uses an if statement to do this and the
+later in program it uses a conditional expression to do
+the same task
+*/
+
+
 #include <stdio.h>
 
 int main(void){
@@ -22,9 +29,14 @@ int main(void){
   z = (c >='A' && c <= 'Z') ? c + 'a' - 'A' : c;
   printf("Using conditional expression the lower case char is %c\n", z);
 
-  // this is the correct final version using a conditional expression
+  // this is the final version using a conditional expression
   printf("\nConditional expression with correct printout\n");
-  z = (c >='A' && c <= 'Z') ? printf("Converted to lower case %c\n", c + 'a' - 'A') : printf("Not converted %c\n",c);
+
+  z = (c >='A' && c <= 'Z')
+    ?
+    printf("Converted to lower case %c\n", c + 'a' - 'A')
+    :
+    printf("Not converted %c\n",c);
   
 
   return 0;

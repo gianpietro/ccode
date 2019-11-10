@@ -6,6 +6,8 @@
 int main(void)
 {
   #define UPPER 10
+  #define ANSI_COLOR_RED "\x1b[5;33m"
+  #define ANSI_COLOR_RESET "\x1b[0m"
   
   int stp;
   int c, i, nwhite, nother;
@@ -15,7 +17,7 @@ int main(void)
   i = k = r = x = y = z = m = 0;
   nwhite = nother = 0;
  
-  system("COLOR F2");  //https://agyanadda.blogspot.com/2019/01/how-to-color-of-text-in-c-language.html
+  //system("color 9F");  //https://agyanadda.blogspot.com/2019/01/how-to-color-of-text-in-c-language.html
 
   for (i = 0; i < UPPER; ++i)
      ndigit[i] = 0;
@@ -42,7 +44,7 @@ int main(void)
   printf("Horizontal histogram of digit values between 0 and 9\n");
   printf("------------------------------------------------------\n");
   printf("\n");
-    
+
   for (i=0; i < UPPER; i++){   
       k = ndigit[i];
       for (m=0; m < k; m++){ 
@@ -57,7 +59,7 @@ int main(void)
     for (i=0; i < UPPER; i++){   
        y = ndigit[i];
        if (y > z) {
-         z = y;                 // z will hold the highest value
+         z = y;                                             // z will hold the highest value
        }
     }
     printf("digits =");
@@ -69,22 +71,24 @@ int main(void)
     printf("Vertical histogram of digit values between 0 and 9\n");
     printf("\n");
 
-    for (r=z; r > 0; r--){                // start a loop with the highest occurring value, z
-      for (i=0; i < UPPER; i++){          // loop through the array
-   	if(ndigit[i] >= z)                // if the value of array is >= highest occurring value
-          printf("X\t");                  // print the character X  
+    for (r=z; r > 0; r--){                                  // start a loop with the highest occurring value, z
+      for (i=0; i < UPPER; i++){                            // loop through the array
+   	if(ndigit[i] >= z)                                  // if the value of array is >= highest occurring value
+          printf(ANSI_COLOR_RED "X\t" ANSI_COLOR_RESET);    // print the character X  
 	else
-	  printf(" \t");                  // otherwise move a space along
+	  printf(" \t");                                    // otherwise move a space along
       }
        printf("\n");
-       z--;                               // reduce the value of z by 1
+       z--;                                                 // reduce the value of z by 1
     }    
     printf("----------------------------------------------------------------------------\n");
     printf("\n");   
     for (i = 0; i < UPPER; ++i)
        printf("%d\t", i);
     printf("\n----------------------------------------------------------------------------\n");      
- 
+
+
+    printf("\033[5;32mGraph of digits entered!\n" ANSI_COLOR_RESET);         // print text in red
   scanf("%d", &stp);
 
   return 0;
