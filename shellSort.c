@@ -69,7 +69,7 @@ void shellsort(int v[], int n){
 	  // printf("\033[5;32m %d ", v[m]);
 	  printf("%d ", v[m]);
          }
-	// printf("\n");
+	 printf("\n");
 	// printf(ANSI_COLOR_RESET);
     }
        // printf("\n");
