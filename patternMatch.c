@@ -29,7 +29,8 @@ int getl(char s[], int lim){
 
   i = 0;
   while(--lim > 0 && (c=getchar()) != EOF && c != '\n')
-    s[i++] = c;    
+    s[i++] = c;    	                                         // sets value at s[i] and then increments i by 1
+                                                                 // should be the same as s[i] = c; i++;  
   if (c == '\n')
     s[i++] = c;
   s[i] = '\0';
