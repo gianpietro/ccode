@@ -20,22 +20,24 @@ int main(void){
   int type;
   double op2;
   char s[100];
+  char h;
+  int i = 0; 
+
 
   while ((type = getop(s)) != EOF){
-    ;
    switch(type){
     case '0':
-      //printf("type = %d\n", type);
+      printf("MAIN type = %d\n", type);
       push(atof(s));
       break;
-    case '+':
+      /* case '+':
       push(pop() + pop());
-      break;
+      break;*/
        case '\n':
-      printf("case new line \t%.8g\n", pop());
+	 printf("MAIN case new line \t%.8g\n");//, pop());
       break;
     default:
-      printf("error: unknow command %s\n", s);
+      printf("MAIN error: unknow command %s\n", s);
       break;
       }
   }
@@ -43,12 +45,17 @@ int main(void){
 }
 
 void push(double f){
-  if (sp < 100)
+  if (sp < 100){
+    printf("\t \t PUSH##value sp %d\n", sp);
     val[sp++] = f;
- else
-    printf("error: stack full, can't push %g\n", f);
+    printf("\t \t PUSH##val[sp] value %f\n", val[sp]);
+    printf("\t \t PUSH##value sp after increase %d\n", sp);
+  }else{
+    printf("\t \t PUSH##error: stack full, can't push %g\n", f);
+  }
 }
 
+/*
 double pop(void){
   if (sp > 0)
     return val[--sp];
@@ -56,50 +63,58 @@ double pop(void){
     printf("error: stack empty\n");
    return 0.0;
 }
-
+*/
 int getop(char s[]){
   int i, c;
-
+  int j;
+  // printf("value of c %d\n", c );
   while ((s[0] = c = getch()) == ' ')
-    ;  // printf("value of c %c\n", c);
-  s[1] = '\0';
-  if(!isdigit(c))
-    return c;
+    ;  
+  //s[1] = '\0';
+  // if(!isdigit(c))
+  //  return c;
   i = 0;
-  if (isdigit(c))
-    while (isdigit(s[++i] = c = getch()))
-     ;
+  if (!isdigit(c)){
+    while (!isdigit(s[++i] = c = getch()))
+      printf("isdigit %d\n",isdigit(s[++i] = c = getch()));
+      for (j=0; j<i; j++)
+	   printf("\t GETOP isdigit loop value \%d\n", s[j]);
+      // return c;
+    }
+  
+     printf("\t GETOP value of s[]* %d\n", s[i] );
   s[i] = '\0';
-  if (c != EOF)
+  //if (c != EOF)
   //ungetch(c);
-  buf[bufp++] = c;
-  printf("bufp %d value-%d \n", bufp, buf[bufp]);
+  //buf[bufp++] = c;
+  //printf("bufp %d value-%d \n", bufp, buf[bufp]);
   return '0';
 }
+
 /*
 int getch(void){
-  if (bufp > 0){
+   if (bufp > 0){
      printf("buf[--bufp] = %d \n",buf[--bufp]);
       return buf[--bufp];
     }else{
       return getchar();      
-    }
-      // return (bufp > 0) ? buf[--bufp] : getchar();
+      }
+       return (bufp > 0) ? buf[--bufp] : getchar();
  }
 */
 
 int getch(void){
   if (bufp < 0){
-    printf("value bufp below zero %d\n", bufp);
-    printf("value bufp* below zero %d\n", buf[bufp]);
+    printf("GETCH***value bufp below zero %d\n", bufp);
+    printf("GETCH***value bufp* below zero %d\n", buf[bufp]);
     return getchar();
   }else if (bufp > 0){
-      printf("value bufp greater zero %d\n", bufp);
-      printf("value bufp* below zero %d\n", buf[bufp]);
+      printf("GETCH***value bufp greater zero %d\n", bufp);
+      printf("GETCH***value bufp* below zero %d\n", buf[bufp]);
       // printf("buf[--bufp] = %d \n",buf[--bufp]);
       return buf[--bufp];
   }else{
-    printf("getch is zero \n");
+    printf("GETCH***getch is zero \n");
     return getchar();
   }
 }
