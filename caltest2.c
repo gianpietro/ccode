@@ -47,9 +47,9 @@ int main(void){
 void push(double f){
   if (sp < 100){
     // printf("\t \t PUSH##value sp %d\n", sp);
-    val[sp++] = f;
-    printf("\t \t PUSH##value sp %d\n", sp);
-    printf("\t \t PUSH##val[sp] value %f\n", val[--sp]);
+    printf("\t \t PUSH## sp %d val[] %f\n",sp, val[sp++] = f);
+    // printf("\t \t PUSH##value sp %d\n", sp);
+    //printf("\t \t PUSH##val[sp] value %f\n", f);//val[--sp]);
     //printf("\t \t PUSH##value sp after increase %d\n", sp);
   }else{
     printf("\t \t PUSH##error: stack full, can't push %g\n", f);
@@ -75,35 +75,37 @@ int getop(char s[]){
   // if(!isdigit(c))
   //  return c;
   i = 0;
-  if (isdigit(c)){
+  if (isdigit(c))
     while (isdigit(s[++i] = c = getch()))
-      printf("GETOP isdigit %d\n",isdigit(s[i] = c = getch()));
-      for (j=0; j<i; j++)
-	printf("\t GETOP isdigit %d loop value \%d\n",j, s[j]-48);
+      ;
+  //printf("\t GETOP isdigit %d\n",isdigit(s[i]));
+  //for (j=0; j<i; j++)
+  //printf("\t GETOP isdigit %d loop value \%d\n",j, s[j]-48);
       // return c;
-    }
+    
   // printf("\t GETOP value of i %d\n",i);
   printf("\t GETOP value i%d of s[]* %d\n",i, s[i] );
   s[i] = '\0';
-  //if (c != EOF)
-  //ungetch(c);
+  if (c != EOF)
+  ungetch(c);
   //buf[bufp++] = c;
   //printf("bufp %d value-%d \n", bufp, buf[bufp]);
   return '0';
 }
 
-/*
-int getch(void){
-   if (bufp > 0){
-     printf("buf[--bufp] = %d \n",buf[--bufp]);
-      return buf[--bufp];
-    }else{
-      return getchar();      
-      }
-       return (bufp > 0) ? buf[--bufp] : getchar();
- }
-*/
 
+int getch(void){
+  // printf("bufp is %d buf[--bufp] = %d \n",bufp, buf[--bufp]);
+   if (bufp > 0){
+      printf("bufp is %d buf[--bufp] = %d",bufp, buf[--bufp]);
+        return buf[--bufp];
+    }else{
+       return getchar();      
+      }
+   // return (bufp > 0) ? buf[--bufp] : getchar();
+ }
+
+/*
 int getch(void){
   if (bufp < 0){
     printf("GETCH***value bufp below zero %d\n", bufp);
@@ -120,11 +122,11 @@ int getch(void){
     return getchar();
   }
 }
+*/
 
-
-/*void ungetch(int c){ 
+void ungetch(int c){ 
   if (bufp >= 100)
     printf("ungetch: too many characters\n");
     else
     buf[bufp++] = c;
-    }*/
+    }
