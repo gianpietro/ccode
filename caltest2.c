@@ -25,7 +25,7 @@ int main(void){
 
 
   while ((type = getop(s)) != EOF){
-   switch(type){
+    switch(type){
     case '0':
       printf("MAIN type = %d\n", type);
       push(atof(s));
@@ -46,10 +46,11 @@ int main(void){
 
 void push(double f){
   if (sp < 100){
-    printf("\t \t PUSH##value sp %d\n", sp);
+    // printf("\t \t PUSH##value sp %d\n", sp);
     val[sp++] = f;
-    printf("\t \t PUSH##val[sp] value %f\n", val[sp]);
-    printf("\t \t PUSH##value sp after increase %d\n", sp);
+    printf("\t \t PUSH##value sp %d\n", sp);
+    printf("\t \t PUSH##val[sp] value %f\n", val[--sp]);
+    //printf("\t \t PUSH##value sp after increase %d\n", sp);
   }else{
     printf("\t \t PUSH##error: stack full, can't push %g\n", f);
   }
@@ -70,19 +71,19 @@ int getop(char s[]){
   // printf("value of c %d\n", c );
   while ((s[0] = c = getch()) == ' ')
     ;  
-  //s[1] = '\0';
+  s[1] = '\0';
   // if(!isdigit(c))
   //  return c;
   i = 0;
-  if (!isdigit(c)){
-    while (!isdigit(s[++i] = c = getch()))
-      printf("isdigit %d\n",isdigit(s[++i] = c = getch()));
+  if (isdigit(c)){
+    while (isdigit(s[++i] = c = getch()))
+      printf("GETOP isdigit %d\n",isdigit(s[i] = c = getch()));
       for (j=0; j<i; j++)
-	   printf("\t GETOP isdigit loop value \%d\n", s[j]);
+	printf("\t GETOP isdigit %d loop value \%d\n",j, s[j]-48);
       // return c;
     }
-  
-     printf("\t GETOP value of s[]* %d\n", s[i] );
+  // printf("\t GETOP value of i %d\n",i);
+  printf("\t GETOP value i%d of s[]* %d\n",i, s[i] );
   s[i] = '\0';
   //if (c != EOF)
   //ungetch(c);
@@ -115,6 +116,7 @@ int getch(void){
       return buf[--bufp];
   }else{
     printf("GETCH***getch is zero \n");
+    // printf("GETCH***value bufp* at zero %d\n", buf[bufp]);
     return getchar();
   }
 }
