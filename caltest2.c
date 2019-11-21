@@ -22,6 +22,7 @@ int main(void){
   char s[100];
   char h;
   int i = 0; 
+  int z;
 
 
   while ((type = getop(s)) != EOF){
@@ -30,11 +31,12 @@ int main(void){
       printf("MAIN type = %d\n", type);
       push(atof(s));
       break;
-      /* case '+':
+       case '+':
       push(pop() + pop());
-      break;*/
-       case '\n':
-	 printf("MAIN case new line \t%.8g\n");//, pop());
+      break;
+      case '\n':
+	printf("MAIN case new line\t%.8g\n", pop());
+        printf("MAIN sp = %d\n", sp);  
       break;
     default:
       printf("MAIN error: unknow command %s\n", s);
@@ -46,34 +48,34 @@ int main(void){
 
 void push(double f){
   if (sp < 100){
-    // printf("\t \t PUSH##value sp %d\n", sp);
-    printf("\t \t PUSH## sp %d val[] %f\n",sp, val[sp++] = f);
-    // printf("\t \t PUSH##value sp %d\n", sp);
-    //printf("\t \t PUSH##val[sp] value %f\n", f);//val[--sp]);
-    //printf("\t \t PUSH##value sp after increase %d\n", sp);
+    printf("\t \t ##PUSH## sp %d val[] %f\n",sp, val[sp++] = f);
   }else{
-    printf("\t \t PUSH##error: stack full, can't push %g\n", f);
+    printf("\t \t ##PUSH##error: stack full, can't push %g\n", f);
   }
 }
 
-/*
+
 double pop(void){
-  if (sp > 0)
+  if (sp > 0){
+     printf("^^POP^^^^index %d \n",--sp);
+     ++sp;
     return val[--sp];
-  else
+  }  else {
     printf("error: stack empty\n");
+  }
    return 0.0;
+  
 }
-*/
+
 int getop(char s[]){
   int i, c;
   int j;
   // printf("value of c %d\n", c );
   while ((s[0] = c = getch()) == ' ')
     ;  
-  s[1] = '\0';
-  // if(!isdigit(c))
-  //  return c;
+   s[1] = '\0';
+  if(!isdigit(c) && c != '.')
+   return c;
   i = 0;
   if (isdigit(c))
     while (isdigit(s[++i] = c = getch()))
@@ -84,8 +86,8 @@ int getop(char s[]){
       // return c;
     
   // printf("\t GETOP value of i %d\n",i);
-  printf("\t GETOP value i%d of s[]* %d\n",i, s[i] );
-  s[i] = '\0';
+  printf("\t GETOP value i=%d of s[]* %d\n",i, s[i] );
+   s[i] = '\0';
   if (c != EOF)
   ungetch(c);
   //buf[bufp++] = c;
@@ -95,13 +97,15 @@ int getop(char s[]){
 
 
 int getch(void){
-  // printf("bufp is %d buf[--bufp] = %d \n",bufp, buf[--bufp]);
+  //printf("bufp is %d buf[--bufp] = %d \n",bufp, buf[--bufp]);
    if (bufp > 0){
-      printf("bufp is %d buf[--bufp] = %d",bufp, buf[--bufp]);
+      printf("bufp is %d buf[--bufp] = %d\n",bufp, buf[--bufp]);
+      buf[++bufp];
         return buf[--bufp];
     }else{
        return getchar();      
-      }
+       }
+  
    // return (bufp > 0) ? buf[--bufp] : getchar();
  }
 
@@ -125,8 +129,10 @@ int getch(void){
 */
 
 void ungetch(int c){ 
-  if (bufp >= 100)
+  if (bufp >= 100){
     printf("ungetch: too many characters\n");
-    else
+  }  else{
     buf[bufp++] = c;
+    printf("UNGETCH index %d buffer %d\n",bufp, buf[bufp]);
     }
+}
