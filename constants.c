@@ -78,7 +78,14 @@ z = (a > b) ? a : b  // z = max(a,b) //
 if expr2 and expr3 are of different typew the result is determined
 by the conversion rules (page 44) 
 
-
+typecast functions
+------------------------
+Typecast function 	Description
+atof() 	Converts string to float
+atoi() 	Converts string to int
+atol() 	Converts string to long
+itoa() 	Converts int to string
+ltoa() 	Converts long to string
 
 
 
