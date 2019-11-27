@@ -90,25 +90,24 @@ int getop(char s[]){
     while (isdigit(s[++i] = c = getch()))
       ;
   s[i] = '\0';
-  if (c != EOF)
-    ungetch(c);
-        
+   if (c != EOF)
+      ungetch(c);
   return NUMBER;
 }
 
 int getch(void){
-   return (bufp > 0) ? buf[--bufp] : getchar();
+  return (bufp > 0) ? buf[--bufp] : getchar();
+
 }
 
+
 void ungetch(int c){
-  if (bufp >= BUFSIZE)
+  if (bufp >= BUFSIZE)    
     printf("ungetch: too many characters\n");
   else
     buf[bufp++] = c;
-}
+    }
   
-
-
 
 
 
