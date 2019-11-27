@@ -7,7 +7,10 @@ The second example is using pointers to do strcat
 #include <stdio.h>
 
 int main(void) {
-  /*char s[20], t[20];
+  /* The first method uses array to srtcat
+     and no pointers
+
+  char s[20], t[20];
   int i, j;
   
   printf("Enter a word ");
@@ -39,11 +42,10 @@ int main(void) {
   x = s;
   y = t;
 
-   while (*x != '\0')
-      *x++;                            // *x++ incements the pointer itself
-                                       // while *x = *x + 1 increments the value pointed to by pointer                                              // reason not the same 
-  
-   //*x++ = ' ';                         // put space between two workds
+  while (*x != '\0')
+      *x++;                    // *x++ increments the pointer itself
+                              // while *x = *x + 1 increments the value pointed to by pointer                                                    // reason not the same 
+   //*x++ = ' ';                       // put space between two words
    while ((*x++ = *y++) != '\0')
      ;
    
