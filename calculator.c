@@ -62,31 +62,24 @@ int main(void){
 }
 
 void push(double f){
-  if (sp < MAXVAL){
-      printf("sp_push %d\n", sp);
-    val[sp++] = f;
-  printf("f %f\n", f);
-  //printf("sp_pushed %d\n", sp);
-  
-  }else{
+  if (sp < MAXVAL)
+      val[sp++] = f;
+   else
     printf("error: stack full, can't push %g\n", f);
-  }
+ 
 }
 
 double pop(void){
-  if (sp > 0){
-    printf("&&&& %d\n",sp);
+  if (sp > 0)
     return val[--sp];
-  }else{
+   else
     printf("error: stack empty\n");
-  }
-
-  return 0.0;
+    return 0.0;
 }
 
 int getop(char s[]){
   int i, c;
-
+  int k;
   while ((s[0] = c = getch()) == ' ' || c == '\t')
     ;
   s[1] = '\0';
@@ -99,29 +92,24 @@ int getop(char s[]){
   if (c == '.')
     while (isdigit(s[++i] = c = getch()))
       ;
-  s[i] = '\0';
-    if (c != EOF)
-    ungetch(c);
-        
+  
+   s[i] = '\0';
+        if (c != EOF)
+     ungetch(c);
+           
   return NUMBER;
 }
 
 int getch(void){
-  //return (bufp > 0) ? buf[--bufp] : getchar();
-  return getchar();
+    return (bufp > 0) ? buf[--bufp] : getchar();  
 }
 
 void ungetch(int c){
-  int i, j;
-  j=0;
-  //  if (bufp >= BUFSIZE)
-  //  printf("ungetch: too many characters\n");
-  //  else
-    buf[bufp++] = c;
-    j++;
-    for (i=0;i<j;i++){
-      printf("c = %d\n",bufp);
-    }
+    if (bufp >= BUFSIZE)
+      printf("ungetch: too many characters %d\n",bufp);
+    else
+      buf[bufp++] = c;
+   
  }
   
 

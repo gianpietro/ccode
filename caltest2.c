@@ -13,7 +13,7 @@ int e;
 int getch(void);
 void ungetch(int);
 
-char buf[100];
+char buf[10];
 int bufp = 0;
 
 int main(void){
@@ -25,7 +25,7 @@ int main(void){
   int z;
 
 
-  while ((type = getop(s)) != EOF){
+ while ((type = getop(s)) != EOF){
     switch(type){
     case '0':
       printf("MAIN type = %d\n", type);
@@ -87,7 +87,7 @@ int getop(char s[]){
     
   // printf("\t GETOP value of i %d\n",i);
   printf("\t GETOP value i=%d of s[]* %d\n",i, s[i] );
-   s[i] = '\0';
+  s[i] = '\0';
   if (c != EOF)
   ungetch(c);
   //buf[bufp++] = c;
@@ -109,7 +109,7 @@ int getch(void){
    // return (bufp > 0) ? buf[--bufp] : getchar();
  }
 
-/*
+ /*
 int getch(void){
   if (bufp < 0){
     printf("GETCH***value bufp below zero %d\n", bufp);
@@ -129,10 +129,10 @@ int getch(void){
 */
 
 void ungetch(int c){ 
-  if (bufp >= 100){
+  if (bufp >= 10){
     printf("ungetch: too many characters\n");
   }  else{
-    buf[bufp++] = c;
-    printf("UNGETCH index %d buffer %d\n",bufp, buf[bufp]);
+    //buf[bufp++] = c;
+    printf("UNGETCH index %d buffer %d\n",bufp, buf[bufp++]=c);
     }
 }
