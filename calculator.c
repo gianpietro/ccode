@@ -114,7 +114,7 @@ int getopptr(char *s){
     while (isdigit(*++s = c = getch()))
       ;
   if (c == '.')
-    while (isdigit(*s++ = c = getch()))
+    while (isdigit(*++s = c = getch()))
       ;
   
    *s = '\0';
