@@ -12,6 +12,8 @@ int getop (char []);
 void push(double);
 double pop(void);
 
+int getopptr(char *);    // this is replacement of getop function using pointers
+
 int sp = 0;
 double val[MAXVAL];
 int e;
@@ -28,7 +30,7 @@ int main(void){
   double op2;
   char s[MAXOP];
 
-  while ((type = getop(s)) != EOF){
+  while ((type = getopptr(s)) != EOF){
     switch(type){
     case NUMBER:
       push(atof(s));
@@ -99,6 +101,31 @@ int getop(char s[]){
            
   return NUMBER;
 }
+
+int getopptr(char *s){
+  int i, c;
+  
+  while ((*s = c = getch()) == ' ' || c == '\t')
+  ;
+  *(s+1)= '\0';
+ if(!isdigit(c) && c != '.')
+    return c;
+  if (isdigit(c))
+    while (isdigit(*++s = c = getch()))
+      ;
+  if (c == '.')
+    while (isdigit(*s++ = c = getch()))
+      ;
+  
+   *s = '\0';
+        if (c != EOF)
+     ungetch(c);
+           
+  return NUMBER;
+}
+
+  
+
 
 int getch(void){
     return (bufp > 0) ? buf[--bufp] : getchar();  
