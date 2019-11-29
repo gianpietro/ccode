@@ -3,7 +3,7 @@
 Chapter 2
 =========================
 
-Value of integer can be specified in o          ctal or hexadecimal
+Value of integer can be specified in octal or hexadecimal
 
 e.g. int 31  as decimal value
      octal value 037  - requires leading 0
@@ -126,10 +126,34 @@ now the assignment
 copies content of a[0] to x
 
 
+Summary
+-----------------------
+
+int a[10];
+int *pa;
+
+pa = &a[0];			// set pa to point to element zero of a, pa contains address of a[0]
+or
+pa = a                          // this is the same thing as array name is a synonym 
+                                // for the locaton of initial element
+
+x = *pa                         // will copy content of a[0] into x
+
+pa + 1                          // points to next element of array
+
+*(pa + 1)                       // point to contents of element e.g. a[1]  
+
+pa + 1                          // the address of a[1]
+
+pa[i]                           // the same as *(pa + 1)
+
+*(a + 1)                        // the same as a[i]
+
+&a[i] same as a+i               // address of element
 
 
 
-                                                                                                                                                              
+                                                                                                                                                        
                       
 
 
