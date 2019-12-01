@@ -1,4 +1,6 @@
-/*  The C programming Language 
+******************************************
+******  The C programming Language *******
+******************************************
 
 Chapter 2
 =========================
@@ -95,7 +97,7 @@ Chapter 4
 
 Macros
 
-It is possible to definemulti line  macros  using \ 
+It is possible to define multi line  macros  using \ 
 
 #define swap(t,x,y) { t = _z; \
 	              _z = y; \
@@ -126,14 +128,14 @@ now the assignment
 copies content of a[0] to x
 
 
-Summary
------------------------
+Pointer Summary
+*******************************
 
 int a[10];
 int *pa;
 
 pa = &a[0];			// set pa to point to element zero of a, pa contains address of a[0]
-or
+ or
 pa = a                          // this is the same thing as array name is a synonym 
                                 // for the locaton of initial element
 
@@ -157,5 +159,5 @@ pa[i]                           // the same as *(pa + 1)
                       
 
 
-*/
+
 
