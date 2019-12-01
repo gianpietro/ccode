@@ -5,23 +5,31 @@ like other variables
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLINES 500                                                        // max lines which can be stored  
-#define MANLEN 100                                          
+#define MAXLINES 3                                       // max lines which can be stored  
+#define MAXLEN 100
+#define ALLOCSIZE 10000                                    // alloc function size of available space
 
-char *lineptr[MAXLINES];                                                    // pointers to text lines, pointer stored in array
 
-int readlines(char *lineprt[], int nlines);                                 // notation for pointer stored in array
+char *lineptr[MAXLINES];                                   // pointers to text lines, pointer stored in array
+
+int readlines(char *lineprt[], int nlines);                // notation for pointer stored in array
 void writelines(char *lineptr[], int nlines);
 
 void qsort(char *lineptr[], int left, int right);
 
-int getline(char *, int);
+int getl(char *, int);
 
 char *alloc(int);
+static char allocbuf[ALLOCSIZE];                           // storage for alloc
+static char *allocp = allocbuf;                            // next free position
 
-int main(void){
+void swap(char *[], int, int);
+int strcomp(char *, char *);
+void strcopy(char *, char *);
 
-  int nlines;                                                                // number of input lines read           
+int main(){
+
+  int nlines;                                              // number of input lines read           
 
   if ((nlines = readlines(lineptr, MAXLINES)) >=0) {
        qsort(lineptr, 0, nlines-1);
@@ -32,11 +40,20 @@ int main(void){
        return 1;
   }
 
-return 0;
+  //return 0;
 }
 
+char *alloc(int n) {
+  if (allocbuf + ALLOCSIZE - allocp >= n) {
+    allocp += n;
+    return allocp - n;
+  } else {
+    return 0;
+  }
+}
+                                                              
 /* getline: read a line into s, return length */
-int getline(char s[],int lim)
+int getl(char s[],int lim)
 {
   int c, i;
   for (i=0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i)
@@ -55,11 +72,12 @@ int readlines(char *lineptr[], int maxlines) {
   char *p, line[MAXLEN];
 
   nlines = 0;
-  while ((len = getline(line, MAXLEN)) > 0)
-    if(nlines >= MAXLINES || p = alloc(len) == NULL)
+  while ((len = getl(line, MAXLEN)) > 0)
+    if(nlines >= MAXLINES || (p = alloc(len)) == NULL)
        return -1;
     else {
       line[len-1] = '\0';
+      strcopy(p, line);
       lineptr[nlines++] = p;
     }
   return nlines;
@@ -69,6 +87,43 @@ int readlines(char *lineptr[], int maxlines) {
 void writelines(char *lineptr[], int nlines){
   int i;
 
-  for(i=0;i < nlines; i++)
-    printf("%s\n", lineptr[i]);
+  while (nlines-- > 0)
+    printf("%s\n", *lineptr++);
+}
+
+/* swap: interchange v[i] and v[j] */
+void swap (char *v[], int i, int j) {
+  char *temp;
+
+  temp = v[i];
+  v[i] = v[j];
+  v[j] = temp;
+}
+
+void qsort (char *v[], int left, int right) {
+  int i, last;
+
+  if (left >= right)                                       // do nothing if array contains
+    return;                                                // fewer than two elements
+  swap(v, left, (left + right)/2);
+  last = left;
+  for (i = left+1; i <= right; i++)
+    if (strcmp(v[i], v[left]) < 0)
+      swap(v, ++last, i);
+  swap(v, left, last);
+  qsort(v, left, last-1);
+  qsort(v, last+1, right);
+}
+
+/* strcmp: return <0 if s<t, 0 if s==t, >0 if s>t */
+int strcomp(char * s, char * t) {
+  for ( ; *s == *t; s++, t++)
+    if (*s == '\0')
+      return 0;
+  return *s - *t;
+}
+
+void strcopy(char *s, char * t){
+  while ((*s++ = *t++) != '\0')
+    ;
 }
