@@ -5,7 +5,7 @@ like other variables
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLINES 3                                       // max lines which can be stored  
+#define MAXLINES 100                                       // max lines which can be stored  
 #define MAXLEN 100
 #define ALLOCSIZE 10000                                    // alloc function size of available space
 
@@ -127,3 +127,5 @@ void strcopy(char *s, char * t){
   while ((*s++ = *t++) != '\0')
     ;
 }
+
+            
