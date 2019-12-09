@@ -107,11 +107,18 @@ void qsort (char *v[], int left, int right) {
     return;                                                // fewer than two elements
   swap(v, left, (left + right)/2);
   last = left;
-  for (i = left+1; i <= right; i++)
-    if (strcomp(v[i], v[left]) < 0)
-      swap(v, ++last, i);
+  for (i = left+1; i <= right; i++){
+    printf("i %d\n", i);                                  // debug code remove with for{}  
+    if (strcomp(v[i], v[left]) < 0){   
+      //  printf("i= %d left = %d\n", i,left); 
+      //  printf("string v[i]%s  v[left] %s\n", v[i],v[left]);       // debug code remove with if{} 
+        swap(v, ++last, i);
+    }
+  }
   swap(v, left, last);
   qsort(v, left, last-1);
+  printf("i= %d left = %d\n", i,left); 
+  printf("string v[i]%s  v[left] %s\n", v[i],v[left]);
   qsort(v, last+1, right);
 }
 

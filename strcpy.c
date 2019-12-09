@@ -10,7 +10,8 @@ int main(void) {
   int stp;
   char s[100];
   char t[100];
-  int i;
+  int i = 0;
+  int k;
 
   printf("Enter a word ");
   scanf("%s",s);
@@ -19,9 +20,14 @@ int main(void) {
 
   strcopy(s, t, i);
 
-  printf("value %s\n", t);
+  //printf("value %s\n", t);
 
+  for (k=0; k < i; k++){
+    printf("%c",t[k]);
+  }
+  printf("\n");
   scanf("%d", &stp);
+
 
   return 0;
 }
