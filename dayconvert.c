@@ -40,11 +40,15 @@ int main(void) {
 int day_of_year(int year, int month, int day) {
   int i, leap;
   leap = year%4 == 0 && year%100 !=0 || year%400 == 0;
-  printf("leap %d\n", leap);
+  if (leap == 0)
+    printf("Not a leap year\n");
+  else
+    printf("This is a leap year\n");
+  //  printf("leap %d\n", leap);
   for (i=1; i < month; i++)
-      day += daytab[leap][i];
-     printf("day_of_year %d\n", day);
-      return day;
+    day += daytab[leap][i];
+  printf("day_of_year %d\n", day);
+  return day;
 }
 
 /* Function month_day
@@ -62,8 +66,8 @@ void month_day(int year, int yearday, int *pmonth, int *pday){
   leap = year%4 == 0 && year%100 !=0 || year%400 == 0;
   for (i = 1; yearday > daytab[leap][i]; i++){
     yearday -= daytab[leap][i];
-    printf("yearday %d\n", yearday);
-    printf("days in month %d\n", daytab[leap][i]);
+    //printf("yearday %d\n", yearday);
+    //printf("days in month %d\n", daytab[leap][i]);
   }
   
   *pmonth = i;
@@ -79,10 +83,9 @@ int enter_date(int year, int month , int day){
   leap = year%4 == 0 && year%100 !=0 || year%400 == 0;
   j = month;
   ckday = daytab[leap][j];
-  printf("check day %d\n", ckday);
-  if (day > ckday){
-    printf("ERROR re-enter the date\n");
-    
+  printf("check days in month %d\n", ckday);
+  if (day > ckday || month > 12 || month < 1){   
+    printf("ERROR re-enter the date\n");    
     return 0;
   }else{
     printf("GOOD\n");
