@@ -1,7 +1,7 @@
 /* Program which uses the argc and agrv in the main
-function to search for a pattern in a string and retrun that
+function to search for a pattern in a string and return that
 string if pattern found.
-The first argument entered is the patter to find
+The first argument entered is the pattern to find,
 the subsequent arguments are the strings in which to
 search for the pattern */
 
