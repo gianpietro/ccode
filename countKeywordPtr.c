@@ -3,11 +3,12 @@ which now uses pointers
 
 This example uses a structure to store a list of keywords
 and the struct has a count value to store the number of times
-that keyword is entered into the terminal.
+that keyword is entered into the terminal. 
 The user types words in and the program counts
-any keywords which are found in the structure and updates the keytab[].count
-for that word by 1 each time the word is entered. The word and count (total)
-is displayed when EOF reached. */
+any keywords which are found in the structure. The for loop statement
+uses pointer aritmatic to go through each item in the keytab structure. 
+keytab[].count is updated for that word by 1 each time the word is entered. 
+The word and count (total)is displayed when EOF reached. */
 
 #include <stdio.h>
 #include <ctype.h>
@@ -32,8 +33,6 @@ struct key {
 #define NKEYS (sizeof keytab / sizeof(struct key))
 
 int getword(char *, int);
-//int binsearch(char *, struct key *, int);
-
 //UPDATE function binsearch returning a struct key * (pointer)
 struct key *binsearch(char *, struct key *, int);
 
@@ -44,7 +43,7 @@ int bufp = 0;
 
 int main ()
 {
-  //int n;
+
   char word[MAXWORD];
 
   //UPDATE
@@ -52,41 +51,23 @@ int main ()
 
   while (getword(word,MAXWORD) != EOF)
     if (isalpha(word[0]))
-      //if((n = binsearch(word,keytab,NKEYS)) >= 0)
+      //UPDATE ptr version
       if ((p = binsearch(word,keytab,NKEYS)) != NULL)	
-	//keytab[n].count++;
 	p->count++;  
-  //  for (n = 0; n < NKEYS; n++)
+  /* the for loop uses pointer aritmatic to loop through each item
+     of the structure. It starts at keytab[0] and number of items
+     in struct is NKEYS.
+     It then moves to next item with p++ so keytab[1] and so on
+  */
   for(p = keytab; p < keytab + NKEYS; p++)
-    if (p->count > 0)
-      printf("%4d %s\n", p->count, p->word);
-  //    if(keytab[n].count > 0)
-  //    printf("%4d %s\n", keytab[n].count, keytab[n].word);
+    if (p->count > 0) 
+      printf("%4d %s", p->count, p->word);    
 
   return 0;
  }
 
-/*
-  int binsearch(char *word, struct key tab[], int n) {
-    int cond;
-    int low, high, mid;
 
-    low = 0;
-    high = n - 1;
-    while (low <= high) {
-      mid = (low+high)/2;
-      if((cond = strcmp(word,tab[mid].word)) < 0)
-        high = mid - 1;
-      else if (cond > 0)
-	low = mid + 1;
-      else
-	return mid;
-    }
-    return -1;
-  }
-*/
-
-
+//UPDATE ptr version
 struct key *binsearch(char *word, struct key *tab, int n) {
   int cond;
   struct key *low = &tab[0];
