@@ -199,3 +199,16 @@ a = 15, sa = 55
 a = 15, sa = 60
 
 
+Pointer functions
+**********************
+  
+int *f();       /* function f returning an int*                        */
+int (*g)();     /* pointer g to a function returning an int            */
+
+
+* is a prefix operator and has lower precedence than ()
+so parentheses are used to force the proper association
+
+  
+
+  

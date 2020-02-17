@@ -1,1 +1,1 @@
-This repository contains exercises in c code which are based from the study of the book the C Programming Language by Kernighan and Ritchie. The code is for study and understanding of how c programs function and c code syntax and semantics. I have used Emacs as my coding editor with GCC compiler and GDB debugger. 
+This repository contains exercises in C code which are based from the study of the book C Programming Language by Kernighan and Ritchie. The C code is for study and understanding of syntax and semantics. I have used Emacs with GCC compiler and GDB debugger. 
