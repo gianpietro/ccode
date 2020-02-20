@@ -1,5 +1,5 @@
 /* This program is a modification of the countKeyword.c program
-which now uses pointers
+which now uses pointers. 
 
 This example uses a structure to store a list of keywords
 and the struct has a count value to store the number of times
@@ -43,7 +43,7 @@ int bufp = 0;
 
 int main ()
 {
-
+  int stp; 
   char word[MAXWORD];
 
   //UPDATE
@@ -59,9 +59,12 @@ int main ()
      in struct is NKEYS.
      It then moves to next item with p++ so keytab[1] and so on
   */
+  // p = keytab[0]; p < keytab[0] + 7; p++
   for(p = keytab; p < keytab + NKEYS; p++)
     if (p->count > 0) 
       printf("%4d %s", p->count, p->word);    
+
+  scanf("%d", &stp);
 
   return 0;
  }

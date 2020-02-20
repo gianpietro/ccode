@@ -210,5 +210,37 @@ int (*g)();     /* pointer g to a function returning an int            */
 so parentheses are used to force the proper association
 
   
+Chapter 6
+============
+
+self-referential structures
+
+looking at the binary tree p.139
+
+struct tnode {             /* the tree node  */
+  char *word;              /* points to the text */
+   int count;              /* number of occurrences */
+   struct tnode *left;     /* left child */
+   struct tnode *right     /* right child */
+   };
+
+It is illegal for a structure to contain an instance of itself, bu
+  struct tnode *left;
+declares left to be a pomiter to a tnode, not a tnode itself.
+
+
+Two structures that point to each other
+
+struct t {
+   ...
+   struct s *p   /*  p points to an s  */
+};
+
+struct s {
+   ...
+   struct t *q   /*  q points to an t  */
+};
+
+
 
   
