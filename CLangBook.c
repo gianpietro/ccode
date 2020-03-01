@@ -224,9 +224,9 @@ struct tnode {             /* the tree node  */
    struct tnode *right     /* right child */
    };
 
-It is illegal for a structure to contain an instance of itself, bu
+It is illegal for a structure to contain an instance of itself but
   struct tnode *left;
-declares left to be a pomiter to a tnode, not a tnode itself.
+declares left to be a pointer to a tnode, not a tnode itself.
 
 
 Two structures that point to each other
