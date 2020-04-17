@@ -133,6 +133,7 @@ Pointer Summary
 
 int a[10];
 int *pa;
+int x;
 
 pa = &a[0];			// set pa to point to element zero of a, pa contains address of a[0]
  or
@@ -141,7 +142,7 @@ pa = a                          // this is the same thing as array name is a syn
 
 x = *pa                         // will copy content of a[0] into x
 
-pa + 1                          // points to next element of array
+pa + 1                          // points to next element of array, address of a[1]
 
 *(pa + 1)                       // point to contents of element e.g. a[1]  
 
@@ -149,7 +150,7 @@ pa + 1                          // the address of a[1]
 
 pa[i]                           // the same as *(pa + 1)
 
-*(a + 1)                        // the same as a[i]
+*(a + i)                        // the same as a[i]
 
 &a[i] same as a+i               // address of element
 
