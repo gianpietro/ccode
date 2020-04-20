@@ -1,4 +1,4 @@
-/* Self-referntial structure -Binary Tree
+/* Self-referential structure - Binary Tree
 The nodes on a binary tree are maintained so that at any node the left subtree contains only word
 that are lexicographically less than the word at the node, and the right subtree contains only
 words that are greater */
@@ -15,7 +15,7 @@ the root is now, and words greater than now are on the right of the word
         /  \      \   /   \
     all good   party their to
     / \
- aid  good
+ aid  come
 
 */
 
@@ -60,7 +60,7 @@ int main(void) {
   free_tree(root);
   return 0;
 }
-
+ 
 /* The function addtree is recursive. A word is presented by main to the top
 level(the root) of the tree. At each stage, the word is compared to the word
 already stored at the node, and is percolated down to either the left or right subtree
