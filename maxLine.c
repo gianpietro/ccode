@@ -1,3 +1,6 @@
+/* Enter a line of text and then EOF and program
+   will count number of characters entered */
+
 #include <stdio.h>
 
 #define MAXLINE 1000	       				// maximum input line size

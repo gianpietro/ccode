@@ -243,5 +243,43 @@ struct s {
 };
 
 
+Chapter 7
+============
 
   
+String comparisons need a function in C - usually strcmp() from <string.h>
+The strcmp() function returns a negative value (not necessarily -1) if the first argument
+  sorts before the second; a positive value (not necessarily +1) if the first arguments
+  sorts after the second; and zero if the two values are equal.
+
+e.g passarg.c
+  run program with arguments at promt:
+  ./passarg one two three four
+  
+int main(int argc, char *argv[]) {
+  int i;
+    
+  if (strcmp(argv[1], "one") == 0)
+    printf("%s\n",argv[1]);
+ 
+  return 0;
+}  
+
+sscanf() - similar to scanf() but reads data from a string instead of the terminal
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main () {
+   int day, year;
+   char weekday[20], month[20], dtm[100];
+
+   strcpy( dtm, "Saturday March 25 1989" );
+   sscanf( dtm, "%s %s %d  %d", weekday, month, &day, &year );
+
+   printf("%s %d, %d = %s\n", month, day, year, weekday );
+    
+   return(0);
+} 
+
